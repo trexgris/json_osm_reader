@@ -1,6 +1,10 @@
 #pragma once
 #include <memory>
 #include <string>
+#include <vector>
+#include "../../../include/baroudeur/osm/Utility.hpp"
+
+
 namespace baroudeur {
 namespace pipeline {
 
@@ -10,9 +14,11 @@ public:
   Pipeline();
   ~Pipeline();
   void Process(const std::string & country_core, const std::string & country_places_fp, const std::vector<std::string> & road_data_fps);
+  std::vector<osm::OsmId> GetBusStopsFromTo(const std::string & From, const std::string & To); // tmp
+
 private:
   Pipeline(const Pipeline&) = delete;
-  Pipeline(Helper&&) = delete;
+  Pipeline(Pipeline&&) = delete;
   Pipeline& operator=(const Pipeline&) = delete;
   Pipeline& operator=(Pipeline&&) = delete;
 

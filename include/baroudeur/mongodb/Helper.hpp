@@ -1,11 +1,10 @@
 #pragma once
 #include <memory>
 #include <string>
+#include "../osm/Utility.hpp"
 
 namespace baroudeur {
 namespace mongodb {
-
-
 
 class Helper final {
 public:
@@ -13,6 +12,8 @@ public:
   static std::shared_ptr<Helper> Make();
   Helper();
   ~Helper();
+  osm::OsmId GetClosestBusStop(const std::string & country, const std::string & place);
+
   void ModifyCollectionWithFileContent(const std::string & collection_name, const std::string & jsondata);
 private:
   Helper(const Helper&) = delete;
